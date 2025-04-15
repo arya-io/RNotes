@@ -1,618 +1,401 @@
-ifelse():
-• In a simple way, we can treat ifelse() as a functional
-version of the if-else structure
-Syntax : ifelse(condition, true-value, false-value)
-• If the condition is TRUE then the function returns
-true-value otherwise it returns false-value
+## 🔁 `ifelse()` – Functional Conditional Operator
 
-> v <- c(23, 13, 9, 24, 09, 3, 14, 8, 18, 20)
-> result <- ifelse(v > 10, "Pass", "Fail")
-> result
- [1] "Pass" "Pass" "Fail"
- [4] "Pass" "Fail" "Fail"
- [7] "Pass" "Fail" "Pass"
-[10] "Pass"
+### 📌 Description:
+- A **vectorized** form of `if...else`.
+- Syntax:
+  ```r
+  ifelse(condition, value_if_true, value_if_false)
+  ```
 
-> # if (mtcars$mpg > 25){
-> #   print("Good Mileage")
-> # } else{
-> #   print("OK Mileage")
-> # }
-> 
-> # Above condition doesn't work
-> 
-> # Below syntax gives correct output
-> 
-> ifelse(mtcars$mpg > 25, "Good Mileage", "OK Mileage")
- [1] "OK Mileage"  
- [2] "OK Mileage"  
- [3] "OK Mileage"  
- [4] "OK Mileage"  
- [5] "OK Mileage"  
- [6] "OK Mileage"  
- [7] "OK Mileage"  
- [8] "OK Mileage"  
- [9] "OK Mileage"  
-[10] "OK Mileage"  
-[11] "OK Mileage"  
-[12] "OK Mileage"  
-[13] "OK Mileage"  
-[14] "OK Mileage"  
-[15] "OK Mileage"  
-[16] "OK Mileage"  
-[17] "OK Mileage"  
-[18] "Good Mileage"
-[19] "Good Mileage"
-[20] "Good Mileage"
-[21] "OK Mileage"  
-[22] "OK Mileage"  
-[23] "OK Mileage"  
-[24] "OK Mileage"  
-[25] "OK Mileage"  
-[26] "Good Mileage"
-[27] "Good Mileage"
-[28] "Good Mileage"
-[29] "OK Mileage"  
-[30] "OK Mileage"  
-[31] "OK Mileage"  
-[32] "OK Mileage"
+### ✅ Example 1:
 
-# Creating a new column which does not exist in the dataframe
+```r
+v <- c(23, 13, 9, 24, 9, 3, 14, 8, 18, 20)
+result <- ifelse(v > 10, "Pass", "Fail")
+result
+```
 
-> mtcars$mileage = ifelse(mtcars$mpg > 25, "Good Mileage", "OK Mileage")
-> mtcars
-                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb      mileage
-Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4   OK Mileage
-Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4   OK Mileage
-Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1   OK Mileage
-Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1   OK Mileage
-Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2   OK Mileage
-Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1   OK Mileage
-Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4   OK Mileage
-Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2   OK Mileage
-Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2   OK Mileage
-Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4   OK Mileage
-Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4   OK Mileage
-Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3   OK Mileage
-Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3   OK Mileage
-Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3   OK Mileage
-Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4   OK Mileage
-Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4   OK Mileage
-Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4   OK Mileage
-Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1 Good Mileage
-Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2 Good Mileage
-Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1 Good Mileage
-Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1   OK Mileage
-Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2   OK Mileage
-AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2   OK Mileage
-Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4   OK Mileage
-Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2   OK Mileage
-Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1 Good Mileage
-Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2 Good Mileage
-Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2 Good Mileage
-Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4   OK Mileage
-Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6   OK Mileage
-Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8   OK Mileage
-Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2   OK Mileage
+**Output:**
 
-Mean and Variance Functions:
-• mean()
-• sd()
-• var()
-• Each of the functions above have the syntax usage in the
-following way: function-name(variable-name,na.rm)
-– na.rm by default is FALSE. It should be set to TRUE if we want to
-ignore the NA values while computing
+```r
+[1] "Pass" "Pass" "Fail" "Pass" "Fail"
+[6] "Fail" "Pass" "Fail" "Pass" "Pass"
+```
 
-> mean(mtcars$mpg, na.rm = T)
+---
+
+### ✅ Example 2: Using `ifelse()` with `mtcars`
+
+```r
+# This fails because `if` expects a single logical value
+# if (mtcars$mpg > 25) { print("Good Mileage") }
+
+# Use vectorized ifelse instead
+ifelse(mtcars$mpg > 25, "Good Mileage", "OK Mileage")
+```
+
+**Output (truncated):**
+
+```r
+[1] "OK Mileage"   "OK Mileage"   ...
+[18] "Good Mileage" ...
+```
+
+### ✅ Create New Column Using `ifelse()`
+
+```r
+mtcars$mileage <- ifelse(mtcars$mpg > 25, "Good Mileage", "OK Mileage")
+```
+
+**New column added:**
+
+| Model            | mpg  | mileage       |
+|------------------|------|---------------|
+| Mazda RX4        | 21.0 | OK Mileage    |
+| Fiat 128         | 32.4 | Good Mileage  |
+| Toyota Corolla   | 33.9 | Good Mileage  |
+| Lotus Europa     | 30.4 | Good Mileage  |
+| ...              | ...  | ...           |
+
+---
+
+## 📊 Mean, Variance, and Standard Deviation
+
+### 📌 Functions:
+- `mean()` – Arithmetic mean
+- `sd()` – Standard deviation
+- `var()` – Variance
+
+### ✅ Examples:
+
+```r
+mean(mtcars$mpg, na.rm = TRUE)
+sd(mtcars$mpg)
+var(mtcars$mpg)
+```
+
+**Output:**
+
+```r
+> mean(mtcars$mpg)
 [1] 20.09062
-> sd(mtcars$mpg, na.rm = T)
+
+> sd(mtcars$mpg)
 [1] 6.026948
-> var(mtcars$mpg, na.rm = T)
+
+> var(mtcars$mpg)
 [1] 36.3241
-> sd(mtcars$mpg) # standard deviation
-[1] 6.026948
+```
 
-> mean(airquality$Ozone, na.rm = T) # It will ignore the NA values
-[1] 42.12931
-> # useNA is argument of Table function
+---
 
-summary():
-• For numerical variables, summary function outputs the
-Minimum, Maximum, 1st Quartile, Median, 3rd Quartile and
-Mean
-20
-• For categorical variables, summary function outputs
-the frequency counts
+## 📊 `summary()` – Statistical Summary of Data
 
-summary()
-• We have some few more functions in R like
-predict(), plot() which behave according to the
-class of the argument
+### ✅ Numeric Vectors
 
-> summary(mtcars$mpg)
-   Min. 1st Qu.  Median 
-  10.40   15.43   19.20 
-   Mean 3rd Qu.    Max. 
-  20.09   22.80   33.90 
-> summary(iris$Species.Type)
-Length  Class   Mode 
-     0   NULL   NULL 
-> 
-> summary(mtcars)
-      mpg             cyl             disp             hp             drat             wt             qsec             vs               am              gear            carb         mileage         
- Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0   Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000   Min.   :0.0000   Min.   :3.000   Min.   :1.000   Length:32         
- 1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5   1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000   Class :character  
- Median :19.20   Median :6.000   Median :196.3   Median :123.0   Median :3.695   Median :3.325   Median :17.71   Median :0.0000   Median :0.0000   Median :4.000   Median :2.000   Mode  :character  
- Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7   Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375   Mean   :0.4062   Mean   :3.688   Mean   :2.812                     
- 3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0   3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000                     
- Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0   Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000   Max.   :1.0000   Max.   :5.000   Max.   :8.000
+```r
+summary(mtcars$mpg)
+```
 
-> summary(airquality$Ozone)
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-   1.00   18.00   31.50   42.13   63.25  168.00      37 
-> # Gives summary of the data like min, quartile values, median, mean, max, NA's
+**Output:**
 
-> summary(airquality) # Gives summary for every column in the dataset
-     Ozone           Solar.R           Wind             Temp           Month            Day      
- Min.   :  1.00   Min.   :  7.0   Min.   : 1.700   Min.   :56.00   Min.   :5.000   Min.   : 1.0  
- 1st Qu.: 18.00   1st Qu.:115.8   1st Qu.: 7.400   1st Qu.:72.00   1st Qu.:6.000   1st Qu.: 8.0  
- Median : 31.50   Median :205.0   Median : 9.700   Median :79.00   Median :7.000   Median :16.0  
- Mean   : 42.13   Mean   :185.9   Mean   : 9.958   Mean   :77.88   Mean   :6.993   Mean   :15.8  
- 3rd Qu.: 63.25   3rd Qu.:258.8   3rd Qu.:11.500   3rd Qu.:85.00   3rd Qu.:8.000   3rd Qu.:23.0  
- Max.   :168.00   Max.   :334.0   Max.   :20.700   Max.   :97.00   Max.   :9.000   Max.   :31.0  
- NA's   :37       NA's   :7 
-
-> c2018 <- read.csv("C:/Datasets/cars2018.csv", stringsAsFactors = T)
-> summary(c2018$Transmission) # counts frequency of categorical data
-Automatic       CVT    Manual 
-      760        85       299 
-
-attach()
-• The data is attached to the R search path with attach().
-• Data is searched by R when evaluating a variable, so objects
-in the data can be accessed by simply giving their names.
-Syntax : attach(data)
-22
-Hence, instead of typing…
-It can be simply typed as…
-
-> table(mtcars$mpg.Type)
-< table of extent 0 >
-> mean(mtcars$mpg, na.rm = T)
-[1] 20.09062
-> attach(mtcars)
-> mean(mpg)
-[1] 20.09062
-
-> attach(c2018) 
-> 
-> # After running this command, there is no need to mention dataframe name along with $
-> 
-> summary(Transmission)
-Automatic       CVT    Manual 
-      760        85       299 
-> summary(MPG)
+```r
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-   11.0    19.0    23.0    23.2    26.0    58.0 
-> 
-> detach(c2018)
-> 
-> # This is the detach command, now we would need to mention dataframe name along with $
-> 
-> summary(MPG)
-Error: object 'MPG' not found
+  10.4   15.43    19.2    20.09   22.8    33.9 
+```
 
-Creating Functions
-• Some tasks which may be repeated in different
-situations can be coded as a function
-• A function has inputs and outputs
-• Functions play a very important role in interactive
-graphics technologies like Tibco Spotfire and
-Shiny
-• We create user defined functions by the following
-syntax:
-Function-Name <- function(argument-list) {
-statements
- }
+### ✅ Whole Data Frame
 
-Function Examples
-> add <- function(a, b, c){
-+   
-+   a + b + c
-+ }
-> 
-> add <- function(a, b, c){
-+   
-+   return(a + b + c)
-+   
-+ }
-> 
+```r
+summary(mtcars)
+summary(airquality)
+```
 
-descriptive <- function(input){
-  
-  df <- data.frame(Mean = mean(input, na.rm = T), SD = sd(input, na.rm = T))
-  df
+### ✅ Categorical Variables
+
+```r
+summary(c2018$Transmission)
+```
+
+**Output:**
+
+```r
+Automatic       CVT    Manual 
+      760        85       299 
+```
+
+---
+
+## 📦 `attach()` and `detach()`
+
+### 📌 Use `attach()` to access variables in a dataset **without `$`**.
+
+```r
+attach(mtcars)
+mean(mpg)
+detach(mtcars)
+```
+
+After detaching:
+
+```r
+mean(mpg)  # Error: object 'mpg' not found
+```
+
+> 💡 Use with caution: avoid naming conflicts and always `detach()` after use.
+
+---
+
+## 🧰 Creating Functions in R
+
+### 📘 Syntax:
+
+```r
+function_name <- function(arguments) {
+  # function body
+  return(output)
+}
+```
+
+---
+
+### ✅ Function Examples
+
+#### ➕ Sum of Three Numbers
+
+```r
+add <- function(a, b, c) {
+  return(a + b + c)
 }
 
-Calling the function:
+add(2, 4, 6)  # [1] 12
+```
 
-> add(2, 4, 6)
-[1] 12
-> descriptive(mtcars$mpg)
-      Mean       SD
-1 20.09062 6.026948
+---
 
-> # Creating user defined functions
-> 
-> # Create a function to add two numbers
-> 
-> add <- function(a, b){
-+   a+b
-+ }
-> 
-> add(3, 4)
-[1] 7
-> 
-> 
-> 
-> # Fahrenheit to Celsius
-> 
-> ftoC <- function(temp){
-+   (temp - 32) * (5/9)
-+ }
-> 
-> ftoC(100)
-[1] 37.77778
-> 
-> 
-> 
-> #Celsius to Fahrenheit
-> 
-> ctoF <- function(temp){
-+   (temp * (9/5)) + 32
-+ }
-> 
-> ctoF(37.77778)
-[1] 100
-> 
-> #_____________________________________________________________________________________
-> 
-> # To calculate cube of a number
-> 
-> cube <- function(num){
-+   number <- num*num*num
-+   return(number)
-+ }
-> 
-> cube(5)
-[1] 125
-> 
-> # To calculate Simple Interest
-> 
-> simple <- function(p,r,n){
-+   si <- (p*r*n)/100
-+   return(si)
-+ }
-> simple(10000,10,2)
-[1] 2000
-> 
-> # To pass multiple values, use the following command:
-> 
-> principal <- c(10000, 20000, 30000, 40000, 50000)
-> rate <- c(10, 8, 12, 15, 20)
-> time <- c(2, 4, 5, 3, 7)
-> 
-> simple(principal, rate, time)
+#### 📊 Descriptive Stats (Mean & SD)
+
+```r
+descriptive <- function(input) {
+  df <- data.frame(
+    Mean = mean(input, na.rm = TRUE),
+    SD = sd(input, na.rm = TRUE)
+  )
+  return(df)
+}
+
+descriptive(mtcars$mpg)
+```
+
+**Output:**
+
+| Mean     | SD       |
+|----------|----------|
+| 20.09062 | 6.026948 |
+
+---
+
+#### 🌡️ Fahrenheit to Celsius
+
+```r
+ftoC <- function(temp) {
+  (temp - 32) * (5/9)
+}
+
+ftoC(100)  # [1] 37.77778
+```
+
+---
+
+#### 🌡️ Celsius to Fahrenheit
+
+```r
+ctoF <- function(temp) {
+  (temp * 9/5) + 32
+}
+
+ctoF(37.77778)  # [1] 100
+```
+
+---
+
+#### 🧊 Cube of a Number
+
+```r
+cube <- function(num) {
+  return(num^3)
+}
+
+cube(5)  # [1] 125
+```
+
+---
+
+#### 💰 Simple Interest Calculator
+
+```r
+simple <- function(p, r, n) {
+  return((p * r * n) / 100)
+}
+
+simple(10000, 10, 2)  # [1] 2000
+```
+
+---
+
+### ✅ Using Vectors in Functions (Vectorized)
+
+```r
+principal <- c(10000, 20000, 30000, 40000, 50000)
+rate <- c(10, 8, 12, 15, 20)
+time <- c(2, 4, 5, 3, 7)
+
+simple(principal, rate, time)
+```
+
+**Output:**
+
+```r
 [1]  2000  6400 18000 18000 70000
-> 
-> # This works similar to and only in Numpy in Python
+```
 
-> install.packages("dplyr")
-WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+> 🔁 Similar to **NumPy broadcasting** in Python.
 
-https://cran.rstudio.com/bin/windows/Rtools/
-Installing package into ‘C:/Users/dbda.STUDENTSDC/AppData/Local/R/win-library/4.4’
-(as ‘lib’ is unspecified)
-trying URL 'https://cran.rstudio.com/bin/windows/contrib/4.4/dplyr_1.1.4.zip'
-Content type 'application/zip' length 1589499 bytes (1.5 MB)
-downloaded 1.5 MB
+---
 
-package ‘dplyr’ successfully unpacked and MD5 sums checked
+## ✅ Quick Recap Table
 
-The downloaded binary packages are in
-	C:\Users\dbda.STUDENTSDC\AppData\Local\Temp\RtmpYbqtPw\downloaded_packages
-> library(dplyr)
+| Topic                | Function / Usage                     |
+|----------------------|--------------------------------------|
+| Vector if-else       | `ifelse()`                           |
+| Descriptive stats    | `mean()`, `sd()`, `var()`, `summary()` |
+| Category counts      | `table()`                            |
+| Attach variables     | `attach()` / `detach()`              |
+| Custom functions     | `function() {}`                      |
+| Temperature convert  | `ftoC()`, `ctoF()`                   |
+| Simple interest      | `simple(p, r, n)`                    |
 
-Attaching package: ‘dplyr’
+---
 
-The following objects are masked from ‘package:stats’:
+## 📦 `dplyr` Basics: Installation, Import, and Usage
 
-    filter, lag
+### ✅ Installing & Loading `dplyr`
 
-The following objects are masked from ‘package:base’:
+```r
+install.packages("dplyr")
+library(dplyr)
+```
 
-    intersect, setdiff, setequal, union
+> ⚠️ If prompted about **Rtools**, install it from:  
+> https://cran.rstudio.com/bin/windows/Rtools/
 
-Warning message:
-package ‘dplyr’ was built under R version 4.4.3 
-> 
-> class(mtcars)
-[1] "data.frame"
-> 
-> tbl_cars = as_tibble(mtcars)
-> class(tbl_cars)
-[1] "tbl_df"     "tbl"        "data.frame"
-> 
-> # Returns three classes
-> # "tbl_df"    <- extends  "tbl"    <- extends    "data.frame"
-> 
-> #_______________________________________________________________
-> 
-> ssl = arrange(mtcars,mpg)
-> ssl
-                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb      mileage
-Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4   OK Mileage
-Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4   OK Mileage
-Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4   OK Mileage
-Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4   OK Mileage
-Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4   OK Mileage
-Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8   OK Mileage
-Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3   OK Mileage
-AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2   OK Mileage
-Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2   OK Mileage
-Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4   OK Mileage
-Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3   OK Mileage
-Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3   OK Mileage
-Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4   OK Mileage
-Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1   OK Mileage
-Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2   OK Mileage
-Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4   OK Mileage
-Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2   OK Mileage
-Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6   OK Mileage
-Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4   OK Mileage
-Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4   OK Mileage
-Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1   OK Mileage
-Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2   OK Mileage
-Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1   OK Mileage
-Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1   OK Mileage
-Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2   OK Mileage
-Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2   OK Mileage
-Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2 Good Mileage
-Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1 Good Mileage
-Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2 Good Mileage
-Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2 Good Mileage
-Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1 Good Mileage
-Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1 Good Mileage
-> 
-> # Sorts data in ascending order, in this case 'mpg' column of 'mtcars'
-> 
-> #___________________________________________________________________
-> 
-> 
-> ssl = arrange(mtcars,desc(mpg))
-> ssl
-                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb      mileage
-Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1 Good Mileage
-Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1 Good Mileage
-Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2 Good Mileage
-Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2 Good Mileage
-Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1 Good Mileage
-Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2 Good Mileage
-Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2   OK Mileage
-Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1   OK Mileage
-Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2   OK Mileage
-Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1   OK Mileage
-Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1   OK Mileage
-Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2   OK Mileage
-Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4   OK Mileage
-Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4   OK Mileage
-Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6   OK Mileage
-Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4   OK Mileage
-Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2   OK Mileage
-Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2   OK Mileage
-Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1   OK Mileage
-Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4   OK Mileage
-Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3   OK Mileage
-Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3   OK Mileage
-Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4   OK Mileage
-Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2   OK Mileage
-Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3   OK Mileage
-AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2   OK Mileage
-Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8   OK Mileage
-Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4   OK Mileage
-Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4   OK Mileage
-Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4   OK Mileage
-Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4   OK Mileage
-Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4   OK Mileage
-> 
-> # Sorts data in descending order
-> 
-> #______________________________________________________________________
-> 
-> ssl = arrange(mtcars,desc(mpg), cyl)
-> ssl
-                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb      mileage
-Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1 Good Mileage
-Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1 Good Mileage
-Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2 Good Mileage
-Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2 Good Mileage
-Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1 Good Mileage
-Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2 Good Mileage
-Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2   OK Mileage
-Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1   OK Mileage
-Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2   OK Mileage
-Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1   OK Mileage
-Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2   OK Mileage
-Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1   OK Mileage
-Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4   OK Mileage
-Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4   OK Mileage
-Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6   OK Mileage
-Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4   OK Mileage
-Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2   OK Mileage
-Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2   OK Mileage
-Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1   OK Mileage
-Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4   OK Mileage
-Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3   OK Mileage
-Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3   OK Mileage
-Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4   OK Mileage
-Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2   OK Mileage
-Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3   OK Mileage
-AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2   OK Mileage
-Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8   OK Mileage
-Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4   OK Mileage
-Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4   OK Mileage
-Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4   OK Mileage
-Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4   OK Mileage
-Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4   OK Mileage
-> 
-> # Works similar to ORDER BY of RDBMS SQL
-> 
-> #_____________________________________________________________________
-> 
-> select(mtcars, mpg, wt, am)
-                     mpg    wt am
-Mazda RX4           21.0 2.620  1
-Mazda RX4 Wag       21.0 2.875  1
-Datsun 710          22.8 2.320  1
-Hornet 4 Drive      21.4 3.215  0
-Hornet Sportabout   18.7 3.440  0
-Valiant             18.1 3.460  0
-Duster 360          14.3 3.570  0
-Merc 240D           24.4 3.190  0
-Merc 230            22.8 3.150  0
-Merc 280            19.2 3.440  0
-Merc 280C           17.8 3.440  0
-Merc 450SE          16.4 4.070  0
-Merc 450SL          17.3 3.730  0
-Merc 450SLC         15.2 3.780  0
-Cadillac Fleetwood  10.4 5.250  0
-Lincoln Continental 10.4 5.424  0
-Chrysler Imperial   14.7 5.345  0
-Fiat 128            32.4 2.200  1
-Honda Civic         30.4 1.615  1
-Toyota Corolla      33.9 1.835  1
-Toyota Corona       21.5 2.465  0
-Dodge Challenger    15.5 3.520  0
-AMC Javelin         15.2 3.435  0
-Camaro Z28          13.3 3.840  0
-Pontiac Firebird    19.2 3.845  0
-Fiat X1-9           27.3 1.935  1
-Porsche 914-2       26.0 2.140  1
-Lotus Europa        30.4 1.513  1
-Ford Pantera L      15.8 3.170  1
-Ferrari Dino        19.7 2.770  1
-Maserati Bora       15.0 3.570  1
-Volvo 142E          21.4 2.780  1
-> # displays columns mentioned in the parentheses
-> 
-> select(mtcars,, mpg:wt)
-                     mpg cyl  disp  hp drat    wt
-Mazda RX4           21.0   6 160.0 110 3.90 2.620
-Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875
-Datsun 710          22.8   4 108.0  93 3.85 2.320
-Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215
-Hornet Sportabout   18.7   8 360.0 175 3.15 3.440
-Valiant             18.1   6 225.0 105 2.76 3.460
-Duster 360          14.3   8 360.0 245 3.21 3.570
-Merc 240D           24.4   4 146.7  62 3.69 3.190
-Merc 230            22.8   4 140.8  95 3.92 3.150
-Merc 280            19.2   6 167.6 123 3.92 3.440
-Merc 280C           17.8   6 167.6 123 3.92 3.440
-Merc 450SE          16.4   8 275.8 180 3.07 4.070
-Merc 450SL          17.3   8 275.8 180 3.07 3.730
-Merc 450SLC         15.2   8 275.8 180 3.07 3.780
-Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250
-Lincoln Continental 10.4   8 460.0 215 3.00 5.424
-Chrysler Imperial   14.7   8 440.0 230 3.23 5.345
-Fiat 128            32.4   4  78.7  66 4.08 2.200
-Honda Civic         30.4   4  75.7  52 4.93 1.615
-Toyota Corolla      33.9   4  71.1  65 4.22 1.835
-Toyota Corona       21.5   4 120.1  97 3.70 2.465
-Dodge Challenger    15.5   8 318.0 150 2.76 3.520
-AMC Javelin         15.2   8 304.0 150 3.15 3.435
-Camaro Z28          13.3   8 350.0 245 3.73 3.840
-Pontiac Firebird    19.2   8 400.0 175 3.08 3.845
-Fiat X1-9           27.3   4  79.0  66 4.08 1.935
-Porsche 914-2       26.0   4 120.3  91 4.43 2.140
-Lotus Europa        30.4   4  95.1 113 3.77 1.513
-Ford Pantera L      15.8   8 351.0 264 4.22 3.170
-Ferrari Dino        19.7   6 145.0 175 3.62 2.770
-Maserati Bora       15.0   8 301.0 335 3.54 3.570
-Volvo 142E          21.4   4 121.0 109 4.11 2.780
-> # displays columns in the range of columns
-> 
-> select(mtcars, starts_with("d"))
-                     disp drat
-Mazda RX4           160.0 3.90
-Mazda RX4 Wag       160.0 3.90
-Datsun 710          108.0 3.85
-Hornet 4 Drive      258.0 3.08
-Hornet Sportabout   360.0 3.15
-Valiant             225.0 2.76
-Duster 360          360.0 3.21
-Merc 240D           146.7 3.69
-Merc 230            140.8 3.92
-Merc 280            167.6 3.92
-Merc 280C           167.6 3.92
-Merc 450SE          275.8 3.07
-Merc 450SL          275.8 3.07
-Merc 450SLC         275.8 3.07
-Cadillac Fleetwood  472.0 2.93
-Lincoln Continental 460.0 3.00
-Chrysler Imperial   440.0 3.23
-Fiat 128             78.7 4.08
-Honda Civic          75.7 4.93
-Toyota Corolla       71.1 4.22
-Toyota Corona       120.1 3.70
-Dodge Challenger    318.0 2.76
-AMC Javelin         304.0 3.15
-Camaro Z28          350.0 3.73
-Pontiac Firebird    400.0 3.08
-Fiat X1-9            79.0 4.08
-Porsche 914-2       120.3 4.43
-Lotus Europa         95.1 3.77
-Ford Pantera L      351.0 4.22
-Ferrari Dino        145.0 3.62
-Maserati Bora       301.0 3.54
-Volvo 142E          121.0 4.11
-> # displays columns that starts with 'd' in their column name
-> 
-> select(mtcars, contains("t"))
-                    drat    wt
-Mazda RX4           3.90 2.620
-Mazda RX4 Wag       3.90 2.875
-Datsun 710          3.85 2.320
-Hornet 4 Drive      3.08 3.215
-Hornet Sportabout   3.15 3.440
-Valiant             2.76 3.460
-Duster 360          3.21 3.570
-Merc 240D           3.69 3.190
-Merc 230            3.92 3.150
-Merc 280            3.92 3.440
-Merc 280C           3.92 3.440
-Merc 450SE          3.07 4.070
-Merc 450SL          3.07 3.730
-Merc 450SLC         3.07 3.780
-Cadillac Fleetwood  2.93 5.250
-Lincoln Continental 3.00 5.424
-Chrysler Imperial   3.23 5.345
-Fiat 128            4.08 2.200
-Honda Civic         4.93 1.615
-Toyota Corolla      4.22 1.835
-Toyota Corona       3.70 2.465
-Dodge Challenger    2.76 3.520
-AMC Javelin         3.15 3.435
-Camaro Z28          3.73 3.840
-Pontiac Firebird    3.08 3.845
-Fiat X1-9           4.08 1.935
-Porsche 914-2       4.43 2.140
-Lotus Europa        3.77 1.513
-Ford Pantera L      4.22 3.170
-Ferrari Dino        3.62 2.770
-Maserati Bora       3.54 3.570
-Volvo 142E          4.11 2.780
-> # displays columns that contains 't' in their column name
+---
+
+## 📋 `tibble` – A Modern Data Frame
+
+```r
+class(mtcars)  # [1] "data.frame"
+
+tbl_cars <- as_tibble(mtcars)
+class(tbl_cars)
+# [1] "tbl_df"     "tbl"        "data.frame"
+```
+
+> `tibble` is just a fancy data frame: cleaner printing and easier with `dplyr`.
+
+---
+
+## 🔃 `arrange()` – Sort Rows
+
+### 🔼 Ascending Order:
+
+```r
+ssl <- arrange(mtcars, mpg)
+```
+
+> Sorts by `mpg` in **increasing** order.
+
+### 🔽 Descending Order:
+
+```r
+ssl <- arrange(mtcars, desc(mpg))
+```
+
+> Sorts by `mpg` in **decreasing** order.
+
+### ➕ Multiple Sort Keys (like SQL `ORDER BY mpg DESC, cyl ASC`):
+
+```r
+ssl <- arrange(mtcars, desc(mpg), cyl)
+```
+
+---
+
+## 📌 `select()` – Choose Columns
+
+### ✅ Select Specific Columns:
+
+```r
+select(mtcars, mpg, wt, am)
+```
+
+### ✅ Select Column Range:
+
+```r
+select(mtcars, mpg:wt)
+```
+
+> Includes columns from `mpg` to `wt` (inclusive).
+
+---
+
+## 🔍 Select by Column Name Pattern
+
+### Columns Starting With:
+
+```r
+select(mtcars, starts_with("d"))
+```
+
+> Selects `disp`, `drat`.
+
+### Columns Containing:
+
+```r
+select(mtcars, contains("t"))
+```
+
+> Selects `drat`, `wt`.
+
+---
+
+## 🧠 `dplyr` Cheat Sheet
+
+| Function       | Purpose                               | Example                             |
+|----------------|---------------------------------------|-------------------------------------|
+| `arrange()`    | Sort rows                             | `arrange(df, var)`                  |
+| `desc()`       | Descending order inside `arrange()`   | `arrange(df, desc(var))`            |
+| `select()`     | Select columns                        | `select(df, col1, col2)`            |
+| `starts_with()`| Select columns starting with string   | `select(df, starts_with("mp"))`     |
+| `contains()`   | Select columns containing string      | `select(df, contains("t"))`         |
+
+---
+
+## 💡 Quick Notes
+
+- `arrange()` is like **SQL ORDER BY**
+- `select()` is like **SQL SELECT columns**
+- `desc()` is used inside `arrange()` for descending order
+- Use `as_tibble()` to work with cleaner output
+
+---
+
+You're all set with `dplyr`'s foundation — next, we can dive into:
+- `filter()`: row filtering (like `WHERE` in SQL)
+- `mutate()`: creating/modifying columns
+- `summarise()` + `group_by()`: groupwise summary stats
+- Pipelining with `%>%` (pipe operator)
+
 > 
 > #_______________________________________________________________________
 > 
